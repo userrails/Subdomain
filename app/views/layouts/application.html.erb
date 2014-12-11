@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subdomainapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= current_subdomain %> &nbsp; &nbsp; <%= current_domain %><br/><br/>
+
+  <div class="applayout">
+    <%= render :partial => "layouts/header" %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

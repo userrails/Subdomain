@@ -1,0 +1,32 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+* save subdomain and make it unique
+
+* url for the domain and subdomain creation and identification
+
+* http://railsapps.github.io/tutorial-rails-subdomains.html
+
+* below about the redirection internally
+
+* http://richonrails.com/articles/basic-subdomains-in-ruby-on-rails
+
+* sudo /etc/init.d/nscd restart
+
+* Important note
+
+* add subdomain_config.rb file to your initializers
+
+* routes configure
+
+* sometime due to session problem some errors occur while redirecting so do as per initializers/session_store.rb
+
+* lib/subdomain.rb and make it call to the routes
+
+* checking url && path issue
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

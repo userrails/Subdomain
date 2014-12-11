@@ -1,0 +1,49 @@
+<%= request.subdomain %><br/><%= request.subdomains %><br/><%= request.domain %><br/><%= request.domain != "www" %>
+<br/><%= current_user.subdomain %>
+<!-- this condition need to be check so check the navigation.html.erb file which is very important -->
+<%# if request.subdomain.present? && request.subdomain != "www" %>
+
+<h2><%= link_to "Test Company New1", new_customer_url(:host => current_user.subdomain + '.' + request.domain + request.port_string) %></h2>
+
+<h2><%= link_to "Test Company New1", new_customer_path(:host => current_user.subdomain + '.' + request.domain + request.port_string) %></h2>
+
+<h2><%= link_to "Test Company New2", new_customer_url(:subdomain => current_user.subdomain) %></h2>  
+
+<!-- this is to redirect to mail page -->
+<h4>  
+  <%= link_to 'Main', root_url(:host => request.domain) %>
+</h4>
+
+<h4> 
+  <!-- this is important  -->
+  <%= link_to 'Main2', root_url(:host => request.subdomain + '.' + request.domain + request.port_string) %>
+</h4>
+
+<h1>Listing products</h1>
+<br/>
+
+<%= link_to "users", customers_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
