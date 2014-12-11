@@ -24,12 +24,11 @@ class ApplicationController < ActionController::Base
     root_url(subdomain: false)
   end
 
-  def current_login
-    if current_subdomain == current_user.subdomain
-      return current_user
-    else
-      return nil
+#gives unauthorized access if current subdomain does't match
+  def valid_subdomain?
+    unless current_subdomain == current_user.subdomain
+      flash[:error] = "Unauthorized access!"
+      redirect_to products_url(subdomain: current_user.subdomain)
     end
   end
-  helper_method :current_login
 end

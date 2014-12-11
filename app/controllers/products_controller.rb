@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
+  before_action :valid_subdomain?
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -40,7 +41,7 @@ class ProductsController < ApplicationController
 private
   
   def products
-    @products ||= current_login.products
+    @products ||= current_user.products
   end
 
   def set_product
