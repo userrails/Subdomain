@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 constraints(Subdomain) do
    resources :products
    resources :customers
-  match '/' => 'products#index', via: [:get]
+  #match '/' => 'products#index', via: [:get]
 end
 
 root "homes#index"

@@ -1,5 +1,9 @@
 <%= request.subdomain %><br/><%= request.subdomains %><br/><%= request.domain %><br/><%= request.domain != "www" %>
 <br/><%= current_user.subdomain %>
+
+<br/>
+
+<%= debug current_user %>
 <!-- this condition need to be check so check the navigation.html.erb file which is very important -->
 <%# if request.subdomain.present? && request.subdomain != "www" %>
 

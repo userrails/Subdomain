@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   respond_to :html
 
   def index
-    @products = Product.all
+    products
     respond_with(@products)
   end
 
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = products.new
     respond_with(@product)
   end
 
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = products.new(product_params)
     @product.save
     respond_with(@product)
   end
@@ -37,12 +37,17 @@ class ProductsController < ApplicationController
     respond_with(@product)
   end
 
-  private
-    def set_product
-      @product = Product.find(params[:id])
-    end
+private
+  
+  def products
+    @products ||= current_login.products
+  end
 
-    def product_params
-      params.require(:product).permit(:name)
-    end
+  def set_product
+    @product = products.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name)
+  end
 end

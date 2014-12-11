@@ -24,4 +24,12 @@ class ApplicationController < ActionController::Base
     root_url(subdomain: false)
   end
 
+  def current_login
+    if current_subdomain == current_user.subdomain
+      return current_user
+    else
+      return nil
+    end
+  end
+  helper_method :current_login
 end
